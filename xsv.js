@@ -74,7 +74,7 @@ var xsv = module.exports = function(opts){
 			opts.header = data;
 		} else {
 			t.emit("data", opts.header.reduce(function(d,h,i){
-				return d[h]=(data[i]||null),d;
+				return d[h]=(data.hasOwnProperty(i)?(data[i]||''):null),d;
 			},{}));
 		}
 	};
