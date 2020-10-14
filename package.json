@@ -1,0 +1,13 @@
+{
+  "name": "xsv",
+  "version": "0.0.1",
+  "description": "Stream based parser for files with character separated values",
+  "main": "xsv.js",
+  "author": "yetzt <node@yetzt.me>",
+  "license": "UNLICENSE",
+  "keywords": ["csv","tsv","sv","xsv","parser","stream","parse","streaming","transform","node"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yetzt/node-xsv"
+  },
+}
