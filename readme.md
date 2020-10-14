@@ -33,6 +33,7 @@ fs.createReadStream("file.csv").pipe(xsv(opts).on("data", function(data){
 * `skip` - Number of lines to skip: `int`; Ignores this number of lines before starting to parse. Handy to override the header given you know the field order. Default: `0`
 * `comment` - Comment character: `string`, `Buffer` or `int` of byte code; `null` for to disable. First character/byte only; Ignores all lines starting with this character. Default: `\` for csv or `null` for tsv
 * `unescape` - Transfer escape sequences (`\t`, `\r`, `\n`) in quoted fields to actual control characters: `bool`. Default: `false`
+* `stripbom` — Strip BOM from stream (if present, this *will* mess up your data otherise): `bool`. Default: `true`
 
 ## License
 

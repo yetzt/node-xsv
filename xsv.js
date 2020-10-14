@@ -52,6 +52,7 @@ var xsv = module.exports = function(opts){
 	opts.skip = (!!opts.skip && !isNaN(opts.skip)) ? parseInt(opts.skip,10)||0 : 0;
 
 	opts.unescape = (!opts.hasOwnProperty("unescape")) ? false : !!opts.unescape;
+	opts.stripbom = (!opts.hasOwnProperty("stripbom")) ? true : !!opts.stripbom;
 
 	// states
 	var state_linestart = true;
@@ -60,6 +61,7 @@ var xsv = module.exports = function(opts){
 	var state_skip = false;
 	var state_eol = false;
 	var state_eor = false;
+	var state_first = true;
 	
 	// collection
 	var collect_field = [];
@@ -88,6 +90,10 @@ var xsv = module.exports = function(opts){
 			var pos = mem.length; // initial position for chunk
 			mem = Buffer.concat([mem, chunk]);
 		
+			// strip bom (if an utf8 byte order mark is present, the first header or field would contain it. 
+			if (state_first && opts.stripbom && mem[0] === 0xef && mem[1] === 0xbb && mem[2] === 0xbf) mem = mem.slice(3);
+			state_first = false;
+
 			// check if buffer is empty
 			if (mem.length === 0) return fn();
 			
