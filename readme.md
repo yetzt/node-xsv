@@ -29,8 +29,8 @@ fs.createReadStream("file.csv").pipe(xsv(opts).on("data", function(data){
 * `sep` - Separation character: `string`, `Buffer` or `int` of byte code. First character/byte only. Default: `,`
 * `quote` - Quote character: `string`, `Buffer` or `int` of byte code; `null` for to disable. First character/byte only. Default: `"` for csv or `null` for tsv
 * `escape` - Escape character: `string`, `Buffer` or `int` of byte code; `null` for to disable. First character/byte only. Default: `\` for csv or `null` for tsv
-* `header` - First line is the header: `bool`; `true` emits data as `object`, `false` as array. Default: `true`
-* `skip` - Number of lines to skip: `int`; Ignores this number of lines before starting to parse.
+* `header` - First line is the header: `bool||object`; `true` emits data as `object`, `false` as array. Give an object to set a custom header. Default: `true`
+* `skip` - Number of lines to skip: `int`; Ignores this number of lines before starting to parse. Handy to override the header given you know the field order. Default: `0`
 * `comment` - Comment character: `string`, `Buffer` or `int` of byte code; `null` for to disable. First character/byte only; Ignores all lines starting with this character. Default: `\` for csv or `null` for tsv
 * `unescape` - Transfer escape sequences (`\t`, `\r`, `\n`) in quoted fields to actual control characters: `bool`. Default: `false`
 
