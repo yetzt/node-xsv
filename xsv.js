@@ -203,6 +203,7 @@ var xsv = module.exports = function(opts){
 						// console.log("collected field: "+Buffer.from(collect_field).toString());
 						collect_line.push(Buffer.from(collect_field).toString());
 						collect_field = [];
+						state_fieldstart = true;
 						state_eor = true;
 					}
 					
@@ -214,6 +215,7 @@ var xsv = module.exports = function(opts){
 						mem = mem.slice(i+1);
 						i = -1;
 						state_linestart = true;
+						state_fieldstart = true;
 						state_eol = false;
 						state_eor = false;
 						continue;
