@@ -97,8 +97,6 @@ var xsv = module.exports = function(opts){
 			// check if buffer is empty
 			if (mem.length === 0) return fn();
 			
-			// FIXME: guess
-			
 			// interate over bytes
 			for (var i = pos; i < mem.length; i++) {
 
@@ -221,7 +219,6 @@ var xsv = module.exports = function(opts){
 						state_eor = false;
 						continue;
 					}
-					
 					
 				}
 
