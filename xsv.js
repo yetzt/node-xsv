@@ -56,6 +56,7 @@ var xsv = module.exports = function(opts){
 
 	// states
 	var state_linestart = true;
+	var state_fieldstart = true;
 	var state_escaped = false;
 	var state_quote = false;
 	var state_skip = false;
@@ -134,10 +135,14 @@ var xsv = module.exports = function(opts){
 				}
 				
 				// check for quoted state
-				if (mem[i] === opts.quote && !state_escaped) {
+				if ((state_fieldstart || state_quote) && mem[i] === opts.quote && !state_escaped) {
 					state_quote = !state_quote; // toggle quote state
+					state_fieldstart = false;
 					continue;
 				}
+				
+				// no longer the start of a field
+				state_fieldstart = false;
 				
 				if (state_quote) {
 					
