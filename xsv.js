@@ -181,9 +181,7 @@ var xsv = module.exports = function(opts){
 					
 					if (state_escaped) state_escaped = false;
 					
-				}
-				
-				if (!state_quote) {
+				} else {
 
 					// check for \r\n
 					if (mem[i] === 0xd && mem[i+1] === 0xa) {
