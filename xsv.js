@@ -27,7 +27,7 @@ var xsv = module.exports = function(opts){
 		if (Buffer.isBuffer(opts.quote)) opts.quote = opts.quote[0]; // first byte of nuffer
 		if (typeof opts.quote === "string") opts.quote = opts.quote.charCodeAt(0); // charcode of first character
 		if (typeof opts.quote === "number") opts.quote = (Number.isInteger(opts.quote) ? opts.quote : null); // integer is charcode
-		if (!opts.quote) opts.quote = (opts.sep === 0x9) ? null : 0x22; // none for tsv, default to double quotes
+		if (!opts.quote && opts.quote !== null) opts.quote = (opts.sep === 0x9) ? null : 0x22; // none for tsv, default to double quotes
 	}
 
 	if (!opts.hasOwnProperty("escape")) {
@@ -36,7 +36,7 @@ var xsv = module.exports = function(opts){
 		if (Buffer.isBuffer(opts.escape)) opts.escape = opts.escape[0]; // first byte of nuffer
 		if (typeof opts.escape === "string") opts.escape = opts.escape.charCodeAt(0); // charcode of first character
 		if (typeof opts.escape === "number") opts.escape = (Number.isInteger(opts.escape) ? opts.escape : null); // integer is charcode
-		if (!opts.escape) opts.escape = (opts.sep === 0x9) ? null : 0x5c; // none for tsv, default to backslash
+		if (!opts.escape && opts.escape !== null) opts.escape = (opts.sep === 0x9) ? null : 0x5c; // none for tsv, default to backslash
 	}
 
 	if (!opts.hasOwnProperty("comment")) {
