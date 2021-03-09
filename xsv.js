@@ -45,7 +45,7 @@ var xsv = module.exports = function(opts){
 		if (Buffer.isBuffer(opts.comment)) opts.comment = opts.comment[0]; // first byte of nuffer
 		if (typeof opts.comment === "string") opts.comment = opts.comment.charCodeAt(0); // charcode of first character
 		if (typeof opts.comment === "number") opts.comment = (Number.isInteger(opts.comment) ? opts.comment : null); // integer is charcode
-		if (!opts.escape) opts.escape = null;
+		if (!opts.comment) opts.comment = null;
 	}
 
 	opts.header = (opts.header === false) ? opts.header : (!!opts.header) ? opts.header : true;
