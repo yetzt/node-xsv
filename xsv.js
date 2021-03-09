@@ -48,7 +48,7 @@ var xsv = module.exports = function(opts){
 		if (!opts.comment) opts.comment = null;
 	}
 
-	opts.header = (opts.header === false) ? opts.header : (!!opts.header) ? opts.header : true;
+	opts.header = (opts.header === false) ? false : (typeof opts.header === "object") ? opts.header : true;
 	opts.skip = (!!opts.skip && !isNaN(opts.skip)) ? parseInt(opts.skip,10)||0 : 0;
 
 	opts.unescape = (!opts.hasOwnProperty("unescape")) ? false : !!opts.unescape;
