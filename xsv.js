@@ -91,9 +91,11 @@ var xsv = module.exports = function(opts){
 			mem = Buffer.concat([mem, chunk]);
 		
 			// strip bom (if an utf8 byte order mark is present, the first header or field would contain it. 
-			if (state_first && opts.stripbom && mem[0] === 0xef && mem[1] === 0xbb && mem[2] === 0xbf) mem = mem.slice(3);
-			state_first = false;
-
+			if (state_first) {
+				if (opts.stripbom && mem[0] === 0xef && mem[1] === 0xbb && mem[2] === 0xbf) mem = mem.slice(3);
+				state_first = false;
+			}
+			
 			// check if buffer is empty
 			if (mem.length === 0) return fn();
 			
