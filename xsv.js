@@ -12,7 +12,7 @@ var xsv = module.exports = function(opts){
 	if (typeof opts === "string") opts = { sep: opts.charCodeAt(0) };
 	if (typeof opts === "number") opts = { sep: (Number.isInteger(opts) ? opts : null) };
 
-	if (!opts.hasOwnProperty("sep")) 
+	if (!opts.hasOwnProperty("sep")) {
 		opts.sep = 0x2c; // default to comma
 	} else {
 		if (Buffer.isBuffer(opts.sep)) opts.sep = opts.sep[0]; // first byte of nuffer
