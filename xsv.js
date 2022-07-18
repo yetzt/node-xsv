@@ -53,6 +53,7 @@ var xsv = module.exports = function(opts){
 
 	opts.unescape = (!opts.hasOwnProperty("unescape")) ? false : !!opts.unescape;
 	opts.stripbom = (!opts.hasOwnProperty("stripbom")) ? true : !!opts.stripbom;
+	opts.trim = (!opts.hasOwnProperty("trim")) ? false : !!opts.trim;
 
 	// states
 	var state_linestart = true;
@@ -71,6 +72,7 @@ var xsv = module.exports = function(opts){
 	// action on parsed line
 	var commit = function(data){
 		if (data.length === 1 && data[0] === "") return; // ignore empty lines
+		if (opts.trim) data = data.map(function(v){ return v.trim(); }); // trim if required
 		if (opts.header === false) {
 			t.emit("data", data);
 		} else if (opts.header === true) {

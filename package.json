@@ -1,6 +1,6 @@
 {
   "name": "xsv",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Stream based parser for files with character separated values",
   "main": "xsv.js",
   "author": "yetzt <node@yetzt.me>",

@@ -34,6 +34,7 @@ fs.createReadStream("file.csv").pipe(xsv(opts).on("data", function(data){
 * `comment` - Comment character: `string`, `Buffer` or `int` of byte code; `null` for to disable. First character/byte only; Ignores all lines starting with this character. Default: `\` for csv or `null` for tsv
 * `unescape` - Transfer escape sequences (`\t`, `\r`, `\n`) in quoted fields to actual control characters: `bool`. Default: `false`
 * `stripbom` — Strip BOM from stream (if present, this *will* mess up your data otherise): `bool`. Default: `true`
+* `trim` — remove whitespace before and after values: `bool`. Default: `false`
 
 ## License
 
